@@ -1,0 +1,50 @@
+<div class="main-wrapper">
+    <div class="box-style">
+      <h3 class="text-center my-4">Search for Weather:</h3>
+      <form
+        [formGroup]="weatherSearch"
+        (ngSubmit)="sendToAPI(weatherSearch.value)"
+      >
+        <div class="form-group width-style">
+          <input
+            class="form-control "
+            type="text"
+            id="weatherLocation"
+            aria-describedby="weatherLocation"
+            placeholder="Please input a Location"
+            formControlName="location"
+          />
+        </div>
+        <div class="text-center width-style">
+          <button type="submit" class="btn btn-success btn-md">
+            Search for the weather
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="box-style">
+
+      <h3 class="text-center my-4" style="color: blue;">Weather Details:{{this.weatherData?.location.name}}</h3>
+      <div><i class="fa fa-sun sun"></i></div>
+      <p class="text-center wDetail-style" style="font-size: 32px; margin-top: 30px;">
+        {{ this.weatherData?.current.temp_c }}<sup>C</sup>
+      </p>
+
+      <p class="text-center wDetail-style" style="font-size: 12px;">
+        Today:{{ this.weatherData?.current.condition.text }}
+      </p>
+      <p class="text-center wDetail-style" style="font-size: 12px;">
+        {{ this.weatherData?.current.temp_f }}
+      </p>
+      <p class="text-center wDetail-style" style="font-size: 12px;">
+        {{ this.weatherData?.current.feelslike_c }}
+      </p>
+      <p class="text-center wDetail-style" style="font-size: 12px;">
+        {{ this.weatherData?.current.feelslike_f }}
+      </p>
+      <p class="text-center wDetail-style" style="font-size: 25px; margin-top: 10px;">
+        {{ this.weatherData?.location.name }}/
+        {{ this.weatherData?.location.country }}
+      </p>
+    </div>
+</div>
